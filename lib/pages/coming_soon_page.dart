@@ -97,10 +97,12 @@ class ComingSoonPage extends StatelessWidget {
                       : GridView.count(
                           shrinkWrap: true,
                           physics: const NeverScrollableScrollPhysics(),
-                          crossAxisCount: 4,
+                          crossAxisCount: Responsive.isTablet(context) ? 2 : 4,
                           crossAxisSpacing: 20,
                           mainAxisSpacing: 20,
-                          childAspectRatio: 0.95,
+                          childAspectRatio: Responsive.isTablet(context)
+                              ? 1.5
+                              : 0.95,
                           children: _buildActionCards(context),
                         ),
                 ],

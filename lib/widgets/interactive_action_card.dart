@@ -38,18 +38,19 @@ class _InteractiveActionCardState extends State<InteractiveActionCard> {
         onTap: widget.onTap,
         child: AnimatedContainer(
           duration: const Duration(milliseconds: 250),
+          width: double.infinity,
           curve: Curves.easeOutCubic,
           transform: isHighlighted
               ? (Matrix4.identity()
                   ..translate(0, -6, 0)
                   ..scale(1.02))
               : Matrix4.identity(),
-          padding: const EdgeInsets.all(28),
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 24),
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(24),
             border: Border.all(
-              color: isHighlighted 
+              color: isHighlighted
                   ? AppTheme.naturalGreen.withOpacity(0.3)
                   : AppTheme.darkGreen.withOpacity(0.06),
               width: isHighlighted ? 1.5 : 1,
@@ -69,6 +70,7 @@ class _InteractiveActionCardState extends State<InteractiveActionCard> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisSize: MainAxisSize.min,
             children: [
               AnimatedContainer(
                 duration: const Duration(milliseconds: 250),
@@ -89,11 +91,13 @@ class _InteractiveActionCardState extends State<InteractiveActionCard> {
                   ),
                 ),
               ),
-              const SizedBox(height: 24),
+              const SizedBox(height: 20),
               Text(
                 widget.title,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
                 style: const TextStyle(
-                  fontSize: 18,
+                  fontSize: 16,
                   fontWeight: FontWeight.bold,
                   color: AppTheme.textBlack,
                   letterSpacing: -0.2,
@@ -102,8 +106,10 @@ class _InteractiveActionCardState extends State<InteractiveActionCard> {
               const SizedBox(height: 6),
               Text(
                 widget.subtitle,
+                maxLines: 3,
+                overflow: TextOverflow.ellipsis,
                 style: const TextStyle(
-                  fontSize: 14,
+                  fontSize: 13,
                   color: AppTheme.textGrey,
                   height: 1.3,
                 ),
